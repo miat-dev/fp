@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fp';
+  colors=[
+    '#581b98',
+    '#43dde6',
+  '#3d5af1',
+  '#9e579d',
+  '#fc5ffc',
+  '#faee1c',
+]
 }

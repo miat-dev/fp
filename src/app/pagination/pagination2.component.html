@@ -1,0 +1,124 @@
+<p highlight="world">Welcome to the world of Angular! world</p>
+<div class="list-container" infiniteScroll (onScrollEnd)="loadMoreItems()">
+    <ul class="item-list">
+        <li *ngFor="let item of items">{{ item }}</li>
+    </ul>
+</div>
+<div class="per_page">
+    <span>Item per Page : {{itemsPerPage}}</span>
+    <div class="dropdown">
+        <span>Select v</span> 
+        <div class="dropdown_menu">
+            <div *ngFor="let per of [2,3,5,8]" (click)="itemsPerPage=per">
+                {{per}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .per_page{
+        display: flex;
+    }
+    .dropdown{
+        z-index: 1000;
+        /* border-radius: 4px; */
+        border: 1.8px solid #7c7c7c;
+        width: 80px;
+        margin:0px .5em;
+        padding:.3em 1em;
+        position: relative;
+        cursor: pointer;
+        /* box-sizing:border-box; */
+    }
+    .dropdown_menu{
+        position:absolute;
+        border: 1.8px solid #7c7c7c;
+        width:100%;
+        left:-1.8px;
+        top: 100%;
+        display: none;
+        transition: display 5000ms;
+    }
+    .dropdown_menu div{
+        padding: 4px 6px;
+    }
+    .dropdown_menu div:nth-child(2n){
+        background-color: #b0b0b0;
+    }
+    .dropdown_menu div:hover{
+        background-color: #7c7c7c;
+    }
+    .dropdown:hover .dropdown_menu{
+        display: block;
+    }
+</style>
+
+<div class="container" *appPagination="'NotUsed';info {currentPage,totalItems,itemsPerPage} ;let pages=pages;">
+    <div class="item-list">
+        <div *ngFor="let item of items.slice(currentPage*itemsPerPage,currentPage*itemsPerPage+itemsPerPage)">
+            {{ item }} &nbsp;
+            {{currentPage}}{{totalItems}}{{itemsPerPage}}
+        </div>
+    </div>
+    <!-- (pageChanged)="onPageChanged($event)"> -->
+
+    <div class="pagination-wrapper" >
+        <button (click)="leftPage()">
+            << </button>
+                <div class="pages">
+                    <div [style.left]="marginLeft+'px'">
+                        <span *ngFor="let page of pages;let idx=index;" (click)="onPageChanged(idx)"
+                            [class.active]="currentPage===idx">
+                            {{page}}
+                        </span>
+                    </div>
+                </div>
+                <button (click)="rightPage()">>></button>
+    </div>
+</div>
+
+<!-- <div *ngFor="let item of items">{{item}}</div> -->
+
+<style>
+    .pagination-wrapper {
+        margin: 5px 0;
+        display: flex;
+    }
+    
+    .pagination-wrapper button {
+        z-index: 1;
+        font-weight: 700;
+        padding: 1px;
+    }
+    
+    .pagination-wrapper .pages {
+        position: relative;
+        box-sizing: border-box;
+        width: 40px;
+        /* border: 2px solid red; */
+        overflow: hidden;
+    }
+    .pagination-wrapper .pages div{
+        display: flex;
+        left:12.5px;
+        top: -2px;
+        position: absolute;
+        width: 100%;
+        transition: left 500ms;
+        box-sizing: border-box;
+        /* border: 1px solid rgb(200, 242, 30); */
+        
+    }
+
+    .pagination-wrapper .active {
+        font-weight: 600;
+    }
+
+    .pagination-wrapper span {
+        margin: 0 1px;
+        text-align: center;
+        cursor: pointer;
+        padding: 0 2px;
+    }
+</style>

@@ -1,0 +1,97 @@
+<div class="main">
+    <ng-content></ng-content>
+    <div class="face_ani">&#1421;</div>
+    <div>Use password or fingerprint</div>
+    <div>Couldn't recognized you</div>
+    <div>
+        <div class="passPlaceHolder">
+            <ng-template ngFor [ngForOf]="lockSize" let-i="index">
+                <svg height="16" width="16" class="">
+                    <circle cx="8" cy="8" r="7" stroke="black" stroke-width="1" [attr.fill]="i<getEnteredLen?'black':'transparent'"/>
+                </svg>
+            </ng-template>
+        </div>
+        <div class="key_cont">
+            <ng-template ngFor let-key [ngForOf]="keypadBtn">
+                <div *ngIf="key.digit!==0;else zeroBlock" class="digit_cont" (click)="addPassDigit(key.digit)">
+                    <span class="digit">{{key.digit}}</span>
+                    <span class="code"> {{key.code}}</span>
+                </div>
+                <ng-template #zeroBlock>
+                    <div></div> <!--For grid skiping-->
+                    <div class="digit_cont" (click)="addPassDigit(key.digit)">
+                        <span class="digit">{{key.digit}}</span>
+                        <span class="code"> {{key.code}}</span>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </div>
+        <div class="btn-back">
+            <div>EMERGENCY</div>
+            <div (click)="back()">
+                <span>{{getEnteredLen?'DELETE':'BACK'}}</span>
+            </div>
+        </div>
+    </div>
+    {{password}}
+
+    <!-- &#9675;
+    &#11044;
+    &#9898; -->
+</div>
+<style>
+    .passPlaceHolder{
+        display: flex;
+        justify-content: center;
+    }
+    .passPlaceHolder svg{
+        margin: .15em;
+        transition: fill 1s;
+    }
+    .passPlaceHolder svg.active{
+        animation: scaled 300ms 1;
+    }
+    @keyframes scaled {
+        0%{
+            transform: scale(1);
+        }
+        25%{
+            
+            transform: scale(1.3);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+    .key_cont {
+        user-select: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .key_cont .digit_cont {
+        margin: .4em .5em;
+        padding: .2em .5em;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+
+    .digit {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .code {
+        font-size: .5rem;
+    }
+
+    .btn-back {
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        cursor: pointer;
+    }
+</style>

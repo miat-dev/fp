@@ -1,0 +1,18 @@
+<button style="color:white" (click)="showDialog()">{{authService.isLoggedIn?"Logout":"Sign In"}}</button>
+<modal id="modal_1" *ngIf="authPageShow">
+    <div class="mmodal-body">
+        <div class="close"> <button (click)="closeDialog()">X</button></div>
+        <div class="hello" [ngSwitch]="pageName">
+            <app-verify-email *ngSwitchCase="'emailverify'">
+            </app-verify-email>
+            <app-lgpage *ngSwitchDefault>
+            </app-lgpage>
+            <app-forgot-pass *ngSwitchCase="'forgotpassword'">
+            </app-forgot-pass>
+        </div>
+    </div>
+</modal>
+
+<style>
+
+</style>

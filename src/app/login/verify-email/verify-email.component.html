@@ -1,0 +1,55 @@
+    <div class="main">
+        <div class="authBlock">
+            <h2>Thank you for Registering</h2>
+            <!-- <div *ngIf="authService.userData as user">
+            <p class="text-center">We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+                <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
+            </div> -->
+            <div>
+                <p class="text-center">We have sent a confirmation email to <strong>mda.ug19.cs@nitp.ac.in</strong></p>
+                <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
+            </div>
+
+            <!-- Calling SendVerificationMail() method using authService Api -->
+            <div class="formGroup">
+                <button type="button" class="resend" (click)="authService.SendVerificationMail()">
+                    <i class="fas fa-redo-alt"></i>
+                    Resend Verification Email
+                </button>
+            </div>
+        </div>
+        <div class="signin">Go back to?
+            <button (click)="authService.setAuthPageNav='signin'">Sign In </button>
+        </div>
+    </div>
+<style>
+    .main {
+        box-sizing: border-box;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        width: 100%;
+        padding: 0 3em;
+        overflow: hidden;
+    }
+
+    .resend {
+        padding: 0.6em;
+        background-color: #7bf896;
+        border-radius: 4px;
+    }
+
+    p {
+        font-weight: 500;
+    }
+
+    .signin {
+        margin: 1em;
+    }
+    .signin>button{
+        color: blue;
+    }
+    .signin>button:active{
+        color: transparent;
+    }
+</style>

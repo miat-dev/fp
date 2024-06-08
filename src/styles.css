@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+h3{
+    padding:0;
+    margin: 0;
+}
+button{
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+button:active{
+    color: transparent;
+}
+* button:active{
+    color: transparent;
+}
+.highlight{
+    color: white;
+    background-color: rgb(1, 151, 51);
+}

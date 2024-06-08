@@ -1,0 +1,45 @@
+<div class="main">
+  <div *ngFor="let file of openedFiles;" [class.activeEdit]="(fvService.getCurrEditFile|async)===file.id" >
+        <span class="file_name" (click)="setCurrEditFile(file.id)">{{file.name}}</span>
+        <span class="file_close" (click)="closeFile(file.id)">X</span>
+    </div>
+</div>
+<style>
+    .main{
+        user-select: none;
+        display:flex;
+        color: rgb(182, 182, 107);
+        width: calc(100% - 40px);
+        max-width: 60vw;
+        overflow-x:auto;
+        min-height:2em;
+    }
+    .main::-webkit-scrollbar{
+        height:2.5px;
+    }
+    .main:hover::-webkit-scrollbar-thumb:horizontal{
+        border-radius: 4px;
+        background-color: #898a8a;
+    }
+
+    .main>div{
+        padding: 4px;
+        border-right: 1.5px solid #3e2e2e;
+        background-color: #513c3c;
+
+            }.main>div:last-child{
+                border: none;
+            }
+    .file_name,.file_close{
+        padding: 3px;
+        margin: 3px;
+        cursor: pointer;
+    }
+    .file_close:hover{
+        background-color:#3e2e2e;
+        border-radius: 4px;
+    }
+    .main .activeEdit{
+        background-color: transparent;
+    }
+</style>

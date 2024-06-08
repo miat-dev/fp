@@ -1,0 +1,19 @@
+<div class="test">
+    <h3>Counter App:</h3>
+    <div style="display:flex;" class="counter">
+        <button #minus (click)="dec(minus)">-</button>
+        <div>{{counter}}</div>
+        <button #plus (click)="inc(plus)">+</button>
+    </div>
+    <h3>Two way binding example:</h3>
+    <input #msg type="text" (keyup)="clickMessage=msg.value" [value]='clickMessage'>
+    {{clickMessage}}
+    <input #msg type="text" [(ngModel)]="clickMessage2way">
+    {{clickMessage2way}}
+    <div style="display:flex;flex-wrap: wrap;justify-content: center;">
+        <app-list *ngFor="let item of arr;let idx=index" [item]="{item, idx}"></app-list>
+    </div>
+    <h3>Unistring Symbol:</h3>
+    <input type="number" #box (blur)="setstart(box.value)" placeholder="Enter a starting number">
+    <span *ngFor="let i of symarr;" [innerHTML]=i></span>
+</div>

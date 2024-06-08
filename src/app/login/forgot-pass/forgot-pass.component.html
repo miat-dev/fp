@@ -1,0 +1,51 @@
+<div class="main">
+    <div class="authBlock">
+        <h2>Reset Password</h2>
+        <p class="text-center">Please enter your email address to request a password reset.</p>
+        <div class="formGroup">
+            <input type="email" class="formControl" placeholder="Email Address" #passwordResetEmail required>
+        </div>
+        <!-- Calling ForgotPassword from AuthService Api -->
+        <button type="submit" class="reset" (click)="authService.ForgotPassword(passwordResetEmail.value)">
+            Reset Password
+        </button>
+    </div>
+    <div class="signin">Go back to?
+        <button (click)="authService.setAuthPageNav='signin'">Sign In </button>
+    </div>
+</div>
+
+<style>
+    .main {
+        box-sizing: border-box;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        width: 100%;
+        padding: 0 3em;
+        overflow: hidden;
+    }
+
+    input {
+        margin-bottom: 1em;
+        height: 20px;
+    }
+
+    .reset {
+        padding: 0.6em;
+        background-color: #7bf896;
+        border-radius: 4px;
+    }
+
+    .signin {
+        margin: 1em;
+    }
+
+    .signin>button {
+        color: blue;
+    }
+
+    .signin>button:active {
+        color: transparent;
+    }
+</style>

@@ -1,0 +1,42 @@
+
+<ng-container *ngTemplateOutlet="childTemRef"></ng-container>
+<ng-template #lockWrapper>
+    <app-lock-wrapper (onSecurityPass)="securityPass()"></app-lock-wrapper>
+</ng-template>
+<ng-template #securityPassed>
+    
+    <div class="cont_passed">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="6em" width="6em">
+            <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+        </svg>
+    </div>
+</ng-template>
+
+<style>
+  
+   
+    .cont_passed {
+        width: 180px;
+        height: 300px;
+        background-image: repeating-radial-gradient(#54b7d2 6px, #5fd0ef 15px);
+        border-radius: 6px;
+        display: grid;
+        place-items: center;
+    }
+
+    svg {
+        /* border:2px solid red; */
+        fill: greenyellow;
+        border-radius: 6px;
+        background: rgba(217, 90, 226, 0.7);
+    }
+</style>
+<!-- 
+<div *ngComponentOutlet="lockCompRef;
+content:content
+"></div>
+<ng-template *ngTemplateOutlet="greet;context:{hello:'Horizontal rule',$implicit:'NotFor'}"></ng-template>
+<ng-template #greet let-hello="hello" let-sys>******________****** {{sys}} {{hello}} </ng-template> 
+-->

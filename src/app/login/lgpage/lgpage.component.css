@@ -1,0 +1,24 @@
+
+.loginbox{
+    display:grid;
+    grid-template-columns: 220px 270px;
+}
+.welcomebox{
+    color: #ffffff;
+    background-color: #012333;
+    display:grid;
+    place-items:center;
+}
+.welcomebox>div>div{
+    margin-top: 2em;
+    position: relative;
+}
+.welcomebox>div>div::before{
+    position: absolute;
+    content: '';
+    height: .4em;
+    border-radius:5px;
+    width: 100px;
+    background-color:#45fb6d;
+    bottom: 3.4em;
+} 

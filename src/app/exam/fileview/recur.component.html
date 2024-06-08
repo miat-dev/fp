@@ -1,0 +1,49 @@
+<!-- <p>fileview works!</p> -->
+<!-- {{folders|json}} -->
+<!-- childIndent not used -->
+<div [style.margin-left]="'9px'" class="main">
+    <div *ngFor="let folder of folders;let idx=index;">
+        <div (click)="disToggle[idx]=!disToggle[idx]" class="folder_name">
+             <span> {{disToggle[idx]?'>':'v'}}</span>
+             {{folder.dirname}}</div>
+        <!-- [style.display]="disToggle?'none':'block'"   *ngIf="!disToggle[idx]"  -->
+        <div  [style.display]="disToggle[idx]?'none':'block'">
+            <filerec *ngIf='folder.dir.length!==0' [folders]="folder.dir" [childIndent]='childIndent+8'></filerec>
+            <div style="margin-left: 9px;">
+                <div *ngFor="let file of folder.files;" 
+                (click)="fvService.setOpenNewFile={id:file.id,name:file.name}">
+                {{file.name}}
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .main{
+        /* border-left: 2px solid red; */
+        position: relative;
+    }
+    .main::before{
+        content: '';
+        position:absolute;
+        width: 1.5px;
+        background-color: rgba(151, 144, 154, 0.566);
+        height: calc(100% - 1pc);
+        top:1pc;
+        left: 1px;
+        z-index: -1;
+    }
+    .folder_name{
+        background-color: white;
+        /* border: 1px solid; */
+        cursor:pointer;
+        color: rgb(28, 28, 23);
+        font-weight: 600;
+    }
+    span{
+        font-weight: 600;
+        color: rgb(28, 28, 23);
+    }
+   
+</style>

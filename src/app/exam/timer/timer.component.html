@@ -1,0 +1,36 @@
+<h3>Countdown to Liftoff (via local variable)</h3>
+<button (click)="timer.start()">Start</button>
+<button (click)="timer.stop()">Stop</button>
+<div class="seconds">
+    <span style="opacity:0.7;">
+        {{timer.seconds}}
+    </span>
+</div>
+<countdown-timer #timer></countdown-timer>
+
+<script>
+    console.log("Hello")
+</script>
+<!-- <img width='300px' src="../../../assets/ex.png" style="opacity:.5;border-radius:4px;"> -->
+<style>
+    @import url(https://allfont.net/allfont.css?fonts=digital-7);
+
+    .seconds {
+        margin: 6px;
+        /* padding: 30px; */
+        background-color: black;
+        color: red;
+        width: 4rem;
+        text-align: center;
+        font-family: 'Digital-7', arial;
+        font-size: 4rem;
+        border-radius: 4px;
+        letter-spacing: 5px;
+        border: 3px solid rgb(77, 75, 75);
+        box-shadow: inset 2px 2px 8px rgba(255, 255, 255, 0.6),
+            inset -2px -2px 8px rgba(255, 255, 255, 0.6),
+            2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    
+</style>

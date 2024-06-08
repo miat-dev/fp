@@ -1,0 +1,20 @@
+.test{
+    max-width: 90vw;
+    margin-top: 4px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 40px 25px;
+    background-color: #fafafa;
+    overflow: auto;
+}
+
+.counter{
+    display:flex;
+}
+.counter *{
+    margin: 8px;
+    padding:4px 8px;
+}
+button{
+    cursor: pointer;
+}

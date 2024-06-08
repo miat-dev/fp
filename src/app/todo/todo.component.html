@@ -1,0 +1,126 @@
+<div class="main" *ngIf="authService.isLoggedIn">
+    <div *ngIf="authService.userData as user">
+            <h2>Welcome back!</h2>
+            <div class="media" style="display:grid;grid-template-columns: 100px 1fr;gap:20px;">
+                <div class="pic_container">
+                    <img [src]="(user.photoURL)?user.photoURL : './../../../assets/tutta.jpg'" alt="{{user.displayName}}">
+                </div>
+                <div class="media-body">
+                    <h2 style="margin-top:0;">Hello {{(user.displayName) ? user.displayName : 'User'}}!</h2>
+                    <p>User ID: <strong>{{user.uid}}</strong></p>
+                    <p>Email: <strong>{{user.email}}</strong></p>
+                    <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+                </div>
+        </div>
+    </div>
+    <div class="inp">
+        <input #inp type="text" placeholder="Add new todo _____">
+        <button (click)="addNewTodo(inp.value);inp.value='';">Add</button>
+    </div>
+    <div class="todo-div">
+        <div *ngFor="let todo of todoData;">
+            <!-- {{todo|json}} -->
+            <span #txt [contentEditable]=todo.isEditing>{{todo.text}}</span>
+            <div>
+                <span *ngIf="!todo.isEditing" (click)="editTodo(todo.id,txt.innerText)"
+                    style="transform:rotateZ(90deg)">&#x270e;</span> <!--koi ek-->
+                <span *ngIf="todo.isEditing" (click)="editTodo(todo.id,txt.innerText)"> &#x2713;</span>
+                <!--dikhega at a time-->
+                <span (click)="removeTodo(todo.id)"> &#x2715;</span>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .main {
+        display: flex;
+        width: calc(150px + 30vw);
+        flex-direction: column;
+        margin: 4px;
+    }
+
+    .inp {
+        margin: 8px 0;
+    }
+
+    .inp>* {
+        border: 1.5px solid hsl(0, 0%, 83%);
+        padding: 6px;
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+    .inp input {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .inp input:focus {
+        outline: none;
+    }
+
+    .inp button {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left: none;
+        cursor: pointer;
+        background-color: hsl(0, 0%, 83%);
+    }
+
+    .inp button:active {
+        color: transparent;
+    }
+
+    .todo-div>div {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+        border: 1px solid hsl(0, 0%, 93%);
+        transition: all 0.2s ease-in-out;
+        border-radius: 4px;
+        padding: 4px 5px;
+        background-color: hsl(0, 0%, 98%);
+        font-size: .9rem;
+        font-weight: 500;
+    }
+
+    .todo-div>div:nth-child(2n) {
+        background-color: hsl(0, 0%, 92%);
+        border: 1px solid hsl(0, 0%, 83%);
+    }
+
+    .todo-div>div:hover {
+        box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+        transform: translateY(-1px);
+    }
+
+    span {
+        padding: 2px 4px;
+        margin: 2px;
+    }
+
+    .todo-div>div>span {
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .todo-div>div>div {
+        display: flex;
+        align-items: flex-start
+    }
+
+    .todo-div>div>div span {
+        cursor: pointer;
+        color: hsl(0, 50%, 40%);
+        height: auto;
+    }
+
+    .todo-div>div>div span:active {
+        color: transparent;
+    }
+
+    .todo-div>div>span[contenteditable='true'] {
+        border: 1px solid hsl(0, 65%, 17%);
+        outline: none;
+    }
+</style>

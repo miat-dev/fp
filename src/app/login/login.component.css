@@ -1,0 +1,29 @@
+/* .sshow {
+    display: block;
+}
+.hhidden {
+    display: none;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+.mmodal-body {
+    background: #fff;
+    margin: 7em;
+    font-family: sans-serif;
+    position: relative;
+}
+img{
+    width: 500px;
+}
+.close{
+    position: absolute;
+    right: 6px;
+    top:6px;
+}
+.close > button{
+    border:none;
+    cursor: pointer;
+    background-color:transparent;
+    font-weight: 600;
+    color: #e10e0e;
+}
