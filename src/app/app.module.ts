@@ -30,6 +30,7 @@ import { GravityDirective } from './directive/gravity';
 import { Pagination2 } from './pagination/pagination2.component';
 //import { AngularFireAuthModule } from '@angular/fire/auth';
 // import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { Pagination2 } from './pagination/pagination2.component';
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
+    FontAwesomeModule,
     AngularFireAuthModule
   ],
   providers: [MserviceService,WebsocketService],

@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component(
     {
@@ -8,6 +9,7 @@ import { Component } from "@angular/core";
     }
 )
 export class Pagination2 {
+    faChevronDown=faChevronDown;
     //items:any=['Hello','World']
     loadMoreItems() {
         console.log('Load More')
